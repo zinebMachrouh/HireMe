@@ -18,7 +18,7 @@
             <div class="right">
                 <h4 class="title">LogIn</h4>
                 <p>Welcome back! Please login to your account.</p>
-                <form action="#" method="post">
+                <form action="{{route('loginFunction')}}" method="post">
                     @csrf
                     <label for="email">
                         <h4>Email</h4>
@@ -33,7 +33,7 @@
                         <button type="submit" name="sendF">Submit</button>
                     </div>
                 </form>
-                <p class="sign">Don't Have an account? <a href="#">SignUp</a></p>
+                <p class="sign">Don't Have an account? <a href="{{route('signup')}}">SignUp</a></p>
             </div>
         </div>
     </section>

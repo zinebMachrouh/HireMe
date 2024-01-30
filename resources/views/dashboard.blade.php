@@ -5,5 +5,9 @@
 @endsection
 
 @section('content')
-    <h1>Helloooo</h1>
+    @if (Auth::user()->role)
+        <h1>hello</h1>
+    @else
+        <h1>byee</h1>
+    @endif
 @endsection

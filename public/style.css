@@ -217,7 +217,9 @@ nav a:last-child:hover {
     width: 65%;
     margin-bottom: 60px;
 }
-
+.signup-p{
+    margin-bottom: 40px !important; 
+}
 .right form {
     display: flex;
     flex-direction: column;
@@ -307,4 +309,15 @@ nav a:last-child:hover {
     margin-bottom: 0px;
     margin-top: 25px;
     font-size: 18px;
+}
+.labels {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #1e1e1e;
+}
+
+.labels label {
+    width: 47% !important;
 }
