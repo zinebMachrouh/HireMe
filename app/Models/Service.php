@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Category;
 
 class Service extends Model
 {
@@ -20,5 +21,9 @@ class Service extends Model
     public function prestataire()
     {
         return $this->belongsTo(User::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

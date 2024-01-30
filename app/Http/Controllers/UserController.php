@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -60,5 +61,20 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required | email',
+            'password' => 'required | min:8',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('dashboard');
+        }
+        return back()->withErrors(['email' => 'Invalid credentials']);
     }
 }
