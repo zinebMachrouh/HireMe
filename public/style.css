@@ -7,41 +7,138 @@
     font-family: "Poppins", sans-serif;
 }
 
+article {
+    overflow: hidden;
+    height: 100vh;
+}
+
 :root {
-    --black : #030E11;
-    --dark : #16697A;
-    --med : #489FB5;
-    --light : #82C0CC;
-    --white : #FAFAFA;
-    --side : #FFA62B;
+    --black: #030E11;
+    --dark: #1f7b8e;
+    --hover: #16697A;
+    --med: #489FB5;
+    --light: #82C0CC;
+    --white: #FAFAFA;
+    --side: #FFA62B;
 }
 
 header {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: var(--white);
-    padding: 20px 0px;
+    padding: 20px 150px;
 }
-header h2{
+
+header h2 {
     color: var(--black);
     display: flex;
     align-items: center;
     justify-content: center;
 }
-header h2 img{
+
+header h2 img {
     width: 32px;
 }
-nav{
+
+nav {
     display: flex;
     align-items: center;
     gap: 30px;
 }
-nav a{
+
+nav a {
     text-decoration: none;
     color: var(--black);
     font-weight: 500;
 }
-nav a:last-child{
-    margin-left: 100px;
+
+nav a:last-child {
+    margin-left: 50px;
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 5px 30px;
+    /* border-radius: 15px; */
+}
+
+nav a:last-child:hover {
+    background-color: var(--hover);
+    transition: all ease .3s;
+}
+
+#hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    height: 93vh;
+    padding: 0px 150px;
+}
+
+.left-hero {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.left-hero h1 {
+    font-size: 42px;
+    color: var(--dark);
+}
+
+.left-hero p {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.right-hero img {
+    width: 500px;
+}
+
+.botonat {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.botonat a {
+    color: var(--black);
+    text-decoration: none;
+    padding: 5px 15px;
+    color: var(--white);
+}
+
+.botonat a:first-child {
+    background-color: var(--med);
+}
+
+.botonat a:last-child {
+    background-color: var(--side);
+}
+.mini-cards{
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+.mini-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    /* background-color: red; */
+}
+
+.mini-card:nth-child(1) h4{
+    color: var(--dark);
+    font-size: 24px;
+}
+.mini-card:nth-child(2) h4{
+    color: var(--med);
+    font-size: 24px;
+}
+.mini-card:nth-child(3) h4{
+    color: var(--light);
+    font-size: 24px;
 }
