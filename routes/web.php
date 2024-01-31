@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,6 @@ Route::get('/dashboard', function () {
 Route::post('/loginFunction',[UserController::class, 'login'])->name('loginFunction');
 Route::post('/signupFunction',[UserController::class, 'signup'])->name('signupFunction');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+//ServiceController Routes:
+Route::resource('services', ServiceController::class);

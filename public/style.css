@@ -7,7 +7,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-article {
+.article {
     overflow: hidden;
     height: 100vh;
 }
@@ -41,19 +41,19 @@ header h2 img {
     width: 32px;
 }
 
-nav {
+header nav {
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
-nav a {
+header nav a {
     text-decoration: none;
     color: var(--black);
     font-weight: 500;
 }
 
-nav a:last-child {
+#welcome nav a:last-child {
     margin-left: 50px;
     background-color: var(--dark);
     color: var(--white);
@@ -61,7 +61,7 @@ nav a:last-child {
     /* border-radius: 15px; */
 }
 
-nav a:last-child:hover {
+#welcome nav a:last-child:hover {
     background-color: var(--hover);
     transition: all ease .3s;
 }

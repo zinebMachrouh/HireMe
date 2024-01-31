@@ -12,15 +12,15 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $services = Service::all();
+        return view('dashboard', compact('services'));    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('services.create');
     }
 
     /**
@@ -28,7 +28,19 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            // Add other validation rules as needed
+        ]);
+
+        Service::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            // Add other fields as needed
+        ]);
+
+        return redirect()->route('services.index');
     }
 
     /**
@@ -36,7 +48,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('services.show', ['service' => $service]);
     }
 
     /**
@@ -44,7 +56,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('services.edit', ['service' => $service]);
     }
 
     /**
@@ -52,7 +64,19 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            // Add other validation rules as needed
+        ]);
+
+        $service->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            // Add other fields as needed
+        ]);
+
+        return redirect()->route('services.index')->with('success', 'Service updated successfully');
     }
 
     /**
@@ -60,6 +84,8 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+        return redirect()->route('services.index')->with('success', 'Service deleted successfully');
     }
 }

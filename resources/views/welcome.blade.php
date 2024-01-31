@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <article>
-        <header>
+    <section class="article">
+        <header id="welcome">
             <h2><img src="{{ asset('assets/logo.png') }}" alt="logo">HireMe</h2>
             <nav>
                 <a href="{{route('welcome')}}">Home</a>
@@ -46,6 +46,5 @@
                 <img src="{{ asset('assets/right1.jpeg') }}" alt="">
             </div>
         </main>
-
-    </article>
+    </section>
 @endsection
