@@ -1,4 +1,5 @@
 <?php
+// MyEmail.php
 
 namespace App\Mail;
 
@@ -11,12 +12,16 @@ class MyEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
+
     /**
      * Create a new message instance.
+     *
+     * @param array $data
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -26,7 +31,8 @@ class MyEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.my_email')
-            ->subject('HireMe : Service ');
+        return $this->view('myemail')
+            ->with('data', $this->data)
+            ->subject('HireMe');
     }
 }

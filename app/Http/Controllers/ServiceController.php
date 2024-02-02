@@ -67,7 +67,9 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return view('services.edit', ['service' => $service]);
+        $categories = Category::get();
+
+        return view('services.edit', ['service' => $service, 'categories' => $categories]);
     }
 
     /**
@@ -89,7 +91,7 @@ class ServiceController extends Controller
             'category_id' => $request->input('category'),
         ]);
 
-        return redirect()->route('services.index')->with('success', 'Service updated successfully');
+        return redirect()->route('profile');
     }
 
     /**
@@ -98,7 +100,6 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
-
         return redirect()->route('profile');
     }
 }

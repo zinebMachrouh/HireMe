@@ -37,7 +37,7 @@
                         <div class="footer">
                             <p>${{$service->price}}</p>
                             <div class="actions">
-                                <a href="#">Modify</a>
+                                <a href="{{ route('services.edit', $service) }}">Modify</a>
                                 <a href="{{ route('services.destroy', $service) }}">Delete</a>
                             </div>
                         </div>

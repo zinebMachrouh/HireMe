@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\MyEmail;
+use Illuminate\Support\Facades\Mail;
 
 
 class UserController extends Controller
@@ -50,5 +53,14 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect()->route('welcome');
+    }
+    public function sendEmail(Service $service)
+    {
+        $data = [
+            'service' => $service,
+        ];
+
+        Mail::to('hbenzzinbi@gmail.com')->send(new MyEmail($data));
+
     }
 }

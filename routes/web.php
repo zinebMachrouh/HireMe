@@ -53,3 +53,5 @@ Route::post('/services', [ServiceController::class, 'store'])->name('services.st
 Route::get('/services/{service}/edit', [ServiceController::class, 'edit'])->name('services.edit');
 Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
 Route::get('/services/delete/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+Route::get('/sendEmail/{service}', [UserController::class, 'sendEmail'])->name('sendEmail');
