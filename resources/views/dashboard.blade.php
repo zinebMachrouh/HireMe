@@ -13,9 +13,9 @@
             </h2>
             <nav>
                 <a href="#">Home</a>
-                <a href="{{route('services.create')}}">Add</a>
+                <a href="{{ route('services.create') }}">Add</a>
                 @if (Auth::user()->role)
-                    <a href="{{route('profile')}}">Profile</a>
+                    <a href="{{ route('profile') }}">Profile</a>
                 @endif
                 <a href="{{ route('logout') }}">LogOut</a>
             </nav>
@@ -30,13 +30,16 @@
                                 <span>Service on</span>
                                 <span>{{ \Carbon\Carbon::parse($service->created_at)->format('d-F-Y') }}</span>
                             </div>
-                            <p class="heading">{{$service->title}}</p>
-                            <h4 class="category">{{$service->category->name}}</h4>
-                            <p>{{$service->description}}</p>
+                            <p class="heading">{{ $service->title }}</p>
+                            <h4 class="category">{{ $service->category->name }}</h4>
+                            <p>{{ $service->description }}</p>
                         </div>
                         <div class="footer">
-                            <a href="#"><i class="fa-regular fa-paper-plane"></i> {{$service->user->fname}} {{$service->user->lname}}</a>
-                            <p>${{$service->price}}</p>
+                            {{-- <a href="{{route('sendEmail',$service)}}"><i class="fa-regular fa-paper-plane"></i> {{$service->user->fname}} {{$service->user->lname}}</a> --}}
+                            <a href="#" onclick="alert('Contact Info: 0{{ $service->user->phone_number }}')"><i
+                                    class="fa-regular fa-paper-plane"></i> {{ $service->user->fname }}
+                                {{ $service->user->lname }}</a>
+                            <p>${{ $service->price }}</p>
                         </div>
                     </div>
                 @endforeach
