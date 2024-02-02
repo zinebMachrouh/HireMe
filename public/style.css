@@ -419,3 +419,14 @@ header nav a {
 .create h2 img {
     width: 40px;
 }
+.actions{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+/* .actions a:first-child{
+    color: var(--side);
+} */
+.actions a:last-child{
+    color: #de3c35;
+}

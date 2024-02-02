@@ -20,6 +20,11 @@ class ServiceController extends Controller
         // var_dump(Auth::user()->id);
     }
 
+    public function myServices(){
+        $services = Service::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        return view('profile', compact('services'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -54,15 +59,7 @@ class ServiceController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->route('services.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Service $service)
-    {
-        return view('services.show', ['service' => $service]);
+        return redirect()->route('profile');
     }
 
     /**
@@ -102,6 +99,6 @@ class ServiceController extends Controller
     {
         $service->delete();
 
-        return redirect()->route('services.index')->with('success', 'Service deleted successfully');
+        return redirect()->route('profile');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    Dashboard
+    Profile
 @endsection
 
 @section('content')
@@ -35,8 +35,11 @@
                             <p>{{$service->description}}</p>
                         </div>
                         <div class="footer">
-                            <a href="#"><i class="fa-regular fa-paper-plane"></i> {{$service->user->fname}} {{$service->user->lname}}</a>
                             <p>${{$service->price}}</p>
+                            <div class="actions">
+                                <a href="#">Modify</a>
+                                <a href="{{ route('services.destroy', $service) }}">Delete</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
