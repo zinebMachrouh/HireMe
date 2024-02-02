@@ -20,7 +20,7 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('services.index');
         }
         return back()->withErrors(['email' => 'Invalid credentials']);
     }
@@ -49,6 +49,6 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('services.index');
+        return redirect()->route('welcome');
     }
 }

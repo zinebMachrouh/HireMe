@@ -14,11 +14,11 @@ class Service extends Model
         'title',
         'description',
         'price',
-        'categories',
+        'category_id',
         'user_id',
     ];
 
-    public function prestataire()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

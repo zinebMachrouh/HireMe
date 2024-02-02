@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
@@ -12,15 +15,23 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
-        return view('dashboard', compact('services'));    }
+        $services = Service::where('user_id', '<>', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        return view('dashboard', compact('services'));
+        // var_dump(Auth::user()->id);
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('services.create');
+        if (!Auth::user()->role) {
+            Auth::user()->update([
+                'role' => 1
+            ]);
+        }
+        $categories = Category::get();
+        return view('services.create',compact('categories'));
     }
 
     /**
@@ -29,15 +40,18 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
-            // Add other validation rules as needed
+            'price' => 'required|numeric',
+            'category' => 'required|exists:categories,id',
         ]);
 
         Service::create([
-            'name' => $request->input('name'),
+            'title' => $request->input('title'),
             'description' => $request->input('description'),
-            // Add other fields as needed
+            'price' => $request->input('price'),
+            'category_id' => $request->input('category'),
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect()->route('services.index');
@@ -65,15 +79,17 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
-            // Add other validation rules as needed
+            'price' => 'required|numeric',
+            'category' => 'required|exists:categories,id',
         ]);
 
         $service->update([
-            'name' => $request->input('name'),
+            'title' => $request->input('title'),
             'description' => $request->input('description'),
-            // Add other fields as needed
+            'price' => $request->input('price'),
+            'category_id' => $request->input('category'),
         ]);
 
         return redirect()->route('services.index')->with('success', 'Service updated successfully');
