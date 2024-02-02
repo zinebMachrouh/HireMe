@@ -72,4 +72,4 @@ This project is a local services platform developed with the Laravel framework, 
 
 ## Contributors
 
-- [Your Name](https://github.com/zinebMachrouh)
+- [Zineb Machrouh](https://github.com/zinebMachrouh)
